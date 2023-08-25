@@ -2,16 +2,44 @@
 <!--Welcome WAKASAGI's HTML.-->
 <html>
   <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="description" content="このさいと、うるさいとｗｗｗ">
-    <link rel="canonical" href="https://da-tenshi.github.io/Gyagu/" class="">
-    <link rel="shortcut icon" href="【指定しろばーかばーか あほまぬけー!!】" type="image/jpg">
-    <title>ギャグ</title>
-  </head>
-  <body>
-    <h1>このさいと、うるさいとｗｗｗ</h1>
-    <p>このサイトにあるギャグは若鷺のものですが、引用とかMisskeyとかで投稿する分には問題ないです。</p>
-  </body>
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width" />
+      <meta name="description" content="このさいと、うるさいとｗｗｗ" />
+      <link
+        rel="canonical"
+        href="https://da-tenshi.github.io/Gyagu/"
+        class=""
+      />
+      <link
+        rel="shortcut icon"
+        href="【指定しろばーかばーか あほまぬけー!!】"
+        type="image/jpg"
+      />
+      <title>ギャグ</title>
+    </head>
+
+    <body>
+      <h1>このさいと、うるさいとｗｗｗ</h1>
+      <p>
+        このサイトにあるギャグは若鷺のものですが、引用とかMisskeyとかで投稿する分には問題ないです。
+      </p>
+
+      <ul id="gyagu"></ul>
+
+      <script>
+        fetch('./data.json')
+          .then((res) => res.json())
+          .then((json) => {
+            const fragment = document.createDocumentFragment()
+            for (const data of json) {
+              const li = document.createElement('li')
+              li.textContent = data
+              fragment.appendChild(li)
+            }
+            document.getElementById('gyagu').appendChild(fragment)
+          })
+      </script>
+    </body>
+  </html>
 </html>
